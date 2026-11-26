@@ -1,17 +1,12 @@
-import { writeFileSync, mkdirSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 
-// One emoji, nothing else: Mount Fuji (U+1F5FB), the only emoji Unicode
-// names for one real mountain — a named destination in a single glyph.
-const EMOJI = "🗻";
+// One Emoji, One Dream Vacation — redo
+// Entry: Mountain Railway (U+1F69E), a scenic rail journey through the
+// mountains: the dream is the journey itself, not just the destination.
+// Glacier Express / Bernina Express style bucket-list trip, one glance.
 
-// The grader reads /output/entry.txt; outside the sandbox /output may be
-// absent or read-only, so that write is best-effort and the local copy
-// next to this script always lands.
-try {
-  mkdirSync("/output", { recursive: true });
-  writeFileSync("/output/entry.txt", EMOJI, "utf8");
-} catch {
-  // No /output here — the local entry.txt below is the record.
-}
+const codePoint = 0x1F69E;
+const emoji = String.fromCodePoint(codePoint);
 
-writeFileSync(new URL("entry.txt", import.meta.url), EMOJI, "utf8");
+mkdirSync("/output", { recursive: true });
+writeFileSync("/output/entry.txt", emoji, "utf8");
